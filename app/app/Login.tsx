@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Image, StyleSheet, TouchableOpacity, Text, TextInput, View, Alert } from 'react-native';
 
-export default function HomeScreen() {
+export default function login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

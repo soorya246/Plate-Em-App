@@ -1,11 +1,18 @@
+// Login.tsx
 import React, { useState } from 'react';
 import { Image, StyleSheet, TouchableOpacity, Text, TextInput, View, Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from './types';
+
+type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Onboarding'>;
 
 export default function Login() {
+  const navigation = useNavigation<LoginScreenNavigationProp>();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const isValidEmail = (email) => {
+  const isValidEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email regex
     return emailRegex.test(email);
   };
@@ -18,6 +25,13 @@ export default function Login() {
     // Implement your login logic here
     console.log("Login button pressed");
     console.log(`Email: ${email}, Password: ${password}`);
+    // Navigate to the onboarding screen after login (for example purposes)
+    navigation.navigate('Onboarding');
+  };
+
+  // Developer-only bypass function
+  const handleBypassLogin = () => {
+    navigation.navigate('Onboarding'); // Navigate directly to the Onboarding screen
   };
 
   return (
@@ -72,6 +86,13 @@ export default function Login() {
       <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
+
+      {/* Developer-only Bypass Button */}
+      {__DEV__ && (
+        <TouchableOpacity style={styles.bypassButton} onPress={handleBypassLogin}>
+          <Text style={styles.bypassButtonText}>Skip Login (Dev Only)</Text>
+        </TouchableOpacity>
+      )}
 
       {/* Sign Up Link */}
       <View style={styles.signupContainer}>
@@ -165,6 +186,17 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  bypassButton: {
+    backgroundColor: '#CCC',
+    padding: 15,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  bypassButtonText: {
+    color: '#333',
+    fontSize: 16,
   },
   signupContainer: {
     flexDirection: 'row',

@@ -8,13 +8,12 @@ dining_halls = {
     "JCL Dining": "12(a)",
     "Kins Dining": "03",
     "J2 Dining": "12",
-    # Add more dining halls if needed
 }
 
 def get_user_input():
     # Get dining hall choice
     print("Available dining halls:", ", ".join(dining_halls.keys()))
-    dining_hall = input("Enter the dining hall (e.g., 'JCL Dining' or 'Kins Dining' or 'J2 Dining'): ").strip()
+    dining_hall = input("Enter the dining hall (e.g., 'JCL Dining', 'Kins Dining', or 'J2 Dining'): ").strip()
     
     # Validate dining hall
     if dining_hall not in dining_halls:
@@ -90,7 +89,7 @@ def scrape_nutrition_facts(item_url):
     if nutrition_table:
         rows = nutrition_table.find_all('tr')
         
-        # Set to track displayed nutrients and skip headers
+        # Set to track displayed nutrients and avoid duplicates
         displayed_nutrients = set()
         
         # Iterate over the rows to extract the nutrient and its value
@@ -98,35 +97,26 @@ def scrape_nutrition_facts(item_url):
             # Find the nutrient name within a span with class 'nutfactstopnutrient'
             nutrient_label = row.find('span', {'class': 'nutfactstopnutrient'})
             if nutrient_label:
-                nutrient_name = nutrient_label.get_text(strip=True)
+                nutrient_text = nutrient_label.get_text(strip=True)
 
-                # Skip if it's a header or if already displayed
-                if nutrient_name in displayed_nutrients or nutrient_name.lower() in ["% daily value*", "nutrition facts"]:
-                    continue
-                displayed_nutrients.add(nutrient_name)
+                # Extract the nutrient value directly following the name
+                value_cell = row.find('td', {'align': 'right'})
                 
-                # Extract nutrient value and daily percentage
-                value_cells = row.find_all('td', {'align': 'right'})
-                
-                # Use regex to separate nutrient amount and daily value
-                if len(value_cells) > 0:
-                    nutrient_value_text = value_cells[0].get_text(strip=True)
+                # Proceed only if both nutrient and value are available
+                if nutrient_text and value_cell:
+                    nutrient_value_text = value_cell.get_text(strip=True)
+                    combined_text = nutrient_text + " " + nutrient_value_text
                     
-                    # Regex pattern to separate value and percentage
-                    match = re.match(r"([0-9.]+[a-zA-Z]*)\s*([0-9]+%)?", nutrient_value_text)
+                    # Use regex to parse combined text into name, value, and unit
+                    match = re.match(r"([a-zA-Z\s]+?)(\d+\.?\d*)([a-zA-Z]*)", combined_text)
                     
                     if match:
-                        nutrient_value = match.group(1).strip() if match.group(1) else ""
-                        daily_value = match.group(2).strip() if match.group(2) else ""
+                        nutrient_name = match.group(1).strip()
+                        nutrient_value = match.group(2).strip()
+                        nutrient_unit = match.group(3).strip()
                         
-                        # Print nutrient name, value, and daily value in a clean format
-                        print(f"{nutrient_name}: {nutrient_value}")
-                        if daily_value:
-                            print(f"  Daily Value: {daily_value}")
-                    else:
-                        print(f"{nutrient_name}: {nutrient_value_text}")
-                else:
-                    print(f"{nutrient_name}: No data available")
+                        # Print nutrient in the correct format
+                        print(f"{nutrient_name}: {nutrient_value}{nutrient_unit}")
         print("-" * 40)
     else:
         print("No nutrition facts available for this item.")

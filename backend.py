@@ -7,13 +7,14 @@ from datetime import datetime
 dining_halls = {
     "JCL Dining": "12(a)",
     "Kins Dining": "03",
+    "J2 Dining": "12",
     # Add more dining halls if needed
 }
 
 def get_user_input():
     # Get dining hall choice
     print("Available dining halls:", ", ".join(dining_halls.keys()))
-    dining_hall = input("Enter the dining hall (e.g., 'JCL Dining' or 'Kins Dining'): ").strip()
+    dining_hall = input("Enter the dining hall (e.g., 'JCL Dining' or 'Kins Dining' or 'J2 Dining'): ").strip()
     
     # Validate dining hall
     if dining_hall not in dining_halls:
@@ -134,4 +135,3 @@ if __name__ == "__main__":
     dining_hall, meal, date = get_user_input()
     if dining_hall and meal and date:
         scrape_menu(dining_hall, meal, date)
-

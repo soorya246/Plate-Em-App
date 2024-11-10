@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 const ProfileForm = ({ currentStep, setCurrentStep }) => {
   const navigation = useNavigation();
-  const totalSteps = 4;
+  const totalSteps = 8;
 
   const [form, setForm] = useState({
     preferredFirstName: '',
@@ -21,12 +21,22 @@ const ProfileForm = ({ currentStep, setCurrentStep }) => {
     navigation.navigate('AgeSelector');
   };
 
+  const handleBack = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.backButton} onPress={handleBack}>
+        <Text style={styles.backButtonText}>{'<'} Back</Text>
+      </TouchableOpacity>
+
       <Text style={styles.welcomeText}>Welcome</Text>
       <ProgressBar step={currentStep} totalSteps={totalSteps} />
-      <View style={styles.spacing} />
-      <Text style={styles.title}>What can we call you?</Text> 
+      <Text style={styles.title}>What can we call you?</Text>
       <ScrollView contentContainerStyle={styles.formContainer}>
         <TextInput
           style={styles.input}
@@ -40,11 +50,14 @@ const ProfileForm = ({ currentStep, setCurrentStep }) => {
           value={form.preferredLastName}
           onChangeText={(text) => handleInputChange('preferredLastName', text)}
         />
-        <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
-          <Text style={styles.buttonText}>Next</Text>
-        </TouchableOpacity>
-        <Text style={styles.skipText}>Skip for now</Text>
+        
       </ScrollView>
+      <View style={styles.footer}>
+      <TouchableOpacity style={styles.nextButton} onPress={handleNext}>
+        <Text style={styles.buttonText}>Next</Text>
+      </TouchableOpacity>
+      <Text style={styles.skipText}>Skip for now</Text>
+    </View>
     </View>
   );
 };
@@ -54,6 +67,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
     padding: 20,
+  },
+  footer: {
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+    right: 20,
   },
   welcomeText: {
     fontSize: 20,
@@ -67,10 +86,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#83C61A',
     textAlign: 'center',
-    marginBottom: 20,
-  },
-  spacing: {
-    height: 15,
+    marginTop: 15, // Consistent spacing above the title
+    marginBottom: 20, // Consistent spacing below the title
   },
   formContainer: {
     flexGrow: 1,
@@ -87,7 +104,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     marginTop: 20,
-    width: '100%', // Ensure the button matches the width of the progress bar
+    width: '100%',
   },
   buttonText: {
     color: '#FFFFFF',
@@ -99,6 +116,15 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textAlign: 'center',
     marginTop: 10,
+  },
+  backButton: {
+    alignSelf: 'flex-start',
+    marginBottom: 10,
+  },
+  backButtonText: {
+    color: '#83C61A',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 

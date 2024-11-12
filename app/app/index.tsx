@@ -5,12 +5,12 @@ import WelcomeScreen from './welcomeScreen';
 import LoginScreen from './loginScreen';
 // import OnboardingScreen from './OnboardingScreen';
 import login from './Login';
+import BottomTabNavigator from '@/navigation/BottomTabNavigator';
 import ProfileForm from './SetupProfile/ProfileForm'
 import AgeSelector from './SetupProfile/AgeSelector'
 import GetName from './SetupProfile/GetName';
 import GetSex from './SetupProfile/getSex';
 import GetWeight from './SetupProfile/getWeight';
-
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +35,9 @@ export default function App() {
         <Stack.Screen name="GetWeight">
           {props => <GetWeight {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
         </Stack.Screen>
+        <Stack.Screen name="HomeScreen" 
+        component={BottomTabNavigator}
+        options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

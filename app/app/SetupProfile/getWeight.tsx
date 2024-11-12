@@ -12,6 +12,7 @@ const GetWeight = ({ currentStep, setCurrentStep }) => {
 
   const handleNext = () => {
     setCurrentStep(currentStep + 1);
+    navigation.navigate('HomeScreen');
   };
 
   const handleBack = () => {

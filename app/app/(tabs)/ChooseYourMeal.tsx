@@ -13,7 +13,7 @@ export default function ChooseYourMeal() {
       {/* Meal Options */}
       <TouchableOpacity style={styles.mealContainer}>
         <ImageBackground
-          source={require('./assets/breakfast.jpg')} // Replace with actual image paths
+          source={require('../../assets/images/breakfast.png')} // Replace with actual image paths
           style={styles.imageBackground}
           imageStyle={styles.imageBorderRadius}
         >
@@ -23,7 +23,7 @@ export default function ChooseYourMeal() {
 
       <TouchableOpacity style={styles.mealContainer}>
         <ImageBackground
-          source={require('./assets/lunch.jpg')} // Replace with actual image paths
+          source={require('../../assets/images/lunch.png')} // Replace with actual image paths
           style={styles.imageBackground}
           imageStyle={styles.imageBorderRadius}
         >
@@ -33,7 +33,7 @@ export default function ChooseYourMeal() {
 
       <TouchableOpacity style={styles.mealContainer}>
         <ImageBackground
-          source={require('./assets/dinner.jpg')} // Replace with actual image paths
+          source={require('../../assets/images/dinner.png')} // Replace with actual image paths
           style={styles.imageBackground}
           imageStyle={styles.imageBorderRadius}
         >

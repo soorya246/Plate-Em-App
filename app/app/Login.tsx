@@ -26,12 +26,12 @@ export default function Login() {
     console.log("Login button pressed");
     console.log(`Email: ${email}, Password: ${password}`);
     // Navigate to the onboarding screen after login (for example purposes)
-    navigation.navigate('Onboarding');
+    // navigation.navigate('Onboarding');
   };
 
   // Developer-only bypass function
   const handleBypassLogin = () => {
-    navigation.navigate('Onboarding'); // Navigate directly to the Onboarding screen
+    navigation.navigate('ProfileForm'); // Navigate directly to the Onboarding screen
   };
 
   return (

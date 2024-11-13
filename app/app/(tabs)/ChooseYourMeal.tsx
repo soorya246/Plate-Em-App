@@ -2,34 +2,28 @@ import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function HomeScreen() {
+export default function ChooseYourMeal() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
       {/* Header */}
-     { /*<Text style={styles.header}>Home: Choose Your Meal</Text>*/}
+      <Text style={styles.header}>Home: Choose Your Meal</Text>
 
       {/* Meal Options */}
-      <TouchableOpacity
-      style={styles.mealContainer}
-      onPress={() => navigation.navigate('BreakfastScreen')} // Navigate to BreakfastScreen
-    >
-      <ImageBackground
-        source={require('../assets/images/breakfast.png')} // Replace with the actual image path
-        style={styles.imageBackground}
-        imageStyle={styles.imageBorderRadius}
-      >
-        <Text style={styles.mealText}>Breakfast</Text>
-      </ImageBackground>
-    </TouchableOpacity>
-
-    <TouchableOpacity
-      style={styles.mealContainer}
-      onPress={() => navigation.navigate('LunchScreen')} // Navigate to BreakfastScreen
-    >
+      <TouchableOpacity style={styles.mealContainer}>
         <ImageBackground
-          source={require('../assets/images/lunch.png')} // Replace with actual image paths
+          source={require('../../assets/images/breakfast.png')} // Replace with actual image paths
+          style={styles.imageBackground}
+          imageStyle={styles.imageBorderRadius}
+        >
+          <Text style={styles.mealText}>Breakfast</Text>
+        </ImageBackground>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.mealContainer}>
+        <ImageBackground
+          source={require('../../assets/images/lunch.png')} // Replace with actual image paths
           style={styles.imageBackground}
           imageStyle={styles.imageBorderRadius}
         >
@@ -37,12 +31,9 @@ export default function HomeScreen() {
         </ImageBackground>
       </TouchableOpacity>
 
-      <TouchableOpacity
-      style={styles.mealContainer}
-      onPress={() => navigation.navigate('DinnerScreen')} // Navigate to BreakfastScreen
-    >
+      <TouchableOpacity style={styles.mealContainer}>
         <ImageBackground
-          source={require('../assets/images/dinner.png')} // Replace with actual image paths
+          source={require('../../assets/images/dinner.png')} // Replace with actual image paths
           style={styles.imageBackground}
           imageStyle={styles.imageBorderRadius}
         >
@@ -50,6 +41,25 @@ export default function HomeScreen() {
         </ImageBackground>
       </TouchableOpacity>
 
+      {/* Bottom Navigation */}
+      <View style={styles.bottomNav}>
+        <TouchableOpacity style={styles.navItem}>
+          <Text style={styles.navIcon}>🏠</Text>
+          <Text style={styles.navText}>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItem}>
+          <Text style={styles.navIcon}>📄</Text>
+          <Text style={styles.navText}>J2 Menu</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItem}>
+          <Text style={styles.navIcon}>💬</Text>
+          <Text style={styles.navText}>AI Chat</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navItem}>
+          <Text style={styles.navIcon}>👤</Text>
+          <Text style={styles.navText}>Profile</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

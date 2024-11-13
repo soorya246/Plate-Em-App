@@ -11,17 +11,23 @@ export default function HomeScreen() {
      { /*<Text style={styles.header}>Home: Choose Your Meal</Text>*/}
 
       {/* Meal Options */}
-      <TouchableOpacity style={styles.mealContainer}>
-        <ImageBackground
-          source={require('../assets/images/breakfast.png')} // Replace with actual image paths
-          style={styles.imageBackground}
-          imageStyle={styles.imageBorderRadius}
-        >
-          <Text style={styles.mealText}>Breakfast</Text>
-        </ImageBackground>
-      </TouchableOpacity>
+      <TouchableOpacity
+      style={styles.mealContainer}
+      onPress={() => navigation.navigate('BreakfastScreen')} // Navigate to BreakfastScreen
+    >
+      <ImageBackground
+        source={require('../assets/images/breakfast.png')} // Replace with the actual image path
+        style={styles.imageBackground}
+        imageStyle={styles.imageBorderRadius}
+      >
+        <Text style={styles.mealText}>Breakfast</Text>
+      </ImageBackground>
+    </TouchableOpacity>
 
-      <TouchableOpacity style={styles.mealContainer}>
+    <TouchableOpacity
+      style={styles.mealContainer}
+      onPress={() => navigation.navigate('LunchScreen')} // Navigate to BreakfastScreen
+    >
         <ImageBackground
           source={require('../assets/images/lunch.png')} // Replace with actual image paths
           style={styles.imageBackground}
@@ -31,7 +37,10 @@ export default function HomeScreen() {
         </ImageBackground>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.mealContainer}>
+      <TouchableOpacity
+      style={styles.mealContainer}
+      onPress={() => navigation.navigate('DinnerScreen')} // Navigate to BreakfastScreen
+    >
         <ImageBackground
           source={require('../assets/images/dinner.png')} // Replace with actual image paths
           style={styles.imageBackground}

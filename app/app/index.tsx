@@ -11,6 +11,9 @@ import AgeSelector from './SetupProfile/AgeSelector'
 import GetName from './SetupProfile/GetName';
 import GetSex from './SetupProfile/getSex';
 import GetWeight from './SetupProfile/getWeight';
+import BreakfastScreen from './BreakfastScreen';
+import LunchScreen from './LunchScreen';
+import DinnerScreen from './DinnerScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +41,21 @@ export default function App() {
         <Stack.Screen name="HomeScreen" 
         component={BottomTabNavigator}
         options={{ headerShown: false }} />
+        <Stack.Screen
+          name="BreakfastScreen" // Adding BreakfastScreen here
+          component={BreakfastScreen}
+          options={{ headerShown: false }}
+        />
+         <Stack.Screen
+          name="LunchScreen" 
+          component={LunchScreen}
+          options={{ headerShown: false }}
+        />
+         <Stack.Screen
+          name="DinnerScreen" 
+          component={DinnerScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -6,7 +6,7 @@ const ConfirmationPage = () => {
   const navigation = useNavigation();
 
   const handleDone = () => {
-    navigation.navigate('Home'); // Replace 'Home' with your target screen
+    navigation.navigate('HomeScreen'); // Replace 'Home' with your target screen
   };
 
   return (

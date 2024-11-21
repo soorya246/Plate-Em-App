@@ -15,6 +15,10 @@ import GetHealthGoal from './SetupProfile/GetHealthGoal';
 import GetDietaryRestrictions from './SetupProfile/GetDietaryRestrictions';
 import GetWorkoutFrequency from './SetupProfile/GetWorkoutFreq';
 import ConfirmationPage from './SetupProfile/ConfirmationPage';
+import BreakfastScreen from './BreakfastScreen';
+import LunchScreen from './LunchScreen';
+import DinnerScreen from './DinnerScreen';
+import HomeScreen from './HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -53,6 +57,18 @@ export default function App() {
         </Stack.Screen>
         <Stack.Screen name="ConfirmationPage">
           {props => <ConfirmationPage {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
+        </Stack.Screen>
+        <Stack.Screen name="BreakfastScreen">
+          {props => <BreakfastScreen {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
+        </Stack.Screen>
+        <Stack.Screen name="LunchScreen">
+          {props => <LunchScreen {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
+        </Stack.Screen>
+        <Stack.Screen name="DinnerScreen">
+          {props => <DinnerScreen {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
+        </Stack.Screen>
+        <Stack.Screen name="HomeScreen">
+          {props => <HomeScreen {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

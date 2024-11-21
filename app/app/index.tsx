@@ -10,7 +10,11 @@ import AgeSelector from './SetupProfile/AgeSelector'
 import GetName from './SetupProfile/GetName';
 import GetSex from './SetupProfile/getSex';
 import GetWeight from './SetupProfile/getWeight';
-
+import GetHeight from './SetupProfile/getHeight';
+import GetHealthGoal from './SetupProfile/GetHealthGoal';
+import GetDietaryRestrictions from './SetupProfile/GetDietaryRestrictions';
+import GetWorkoutFrequency from './SetupProfile/GetWorkoutFreq';
+import ConfirmationPage from './SetupProfile/ConfirmationPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +38,21 @@ export default function App() {
         </Stack.Screen>
         <Stack.Screen name="GetWeight">
           {props => <GetWeight {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
+        </Stack.Screen>
+        <Stack.Screen name="GetHeight">
+          {props => <GetHeight {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
+        </Stack.Screen>
+        <Stack.Screen name="GetHealthGoal">
+          {props => <GetHealthGoal {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
+        </Stack.Screen>
+        <Stack.Screen name="GetDietaryRestrictions">
+          {props => <GetDietaryRestrictions {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
+        </Stack.Screen>
+        <Stack.Screen name="GetWorkoutFrequency">
+          {props => <GetWorkoutFrequency {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
+        </Stack.Screen>
+        <Stack.Screen name="ConfirmationPage">
+          {props => <ConfirmationPage {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

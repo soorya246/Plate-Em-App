@@ -2,11 +2,14 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import BottomTabNavigator from '@/navigation/BottomTabNavigator';
 
 export default function BreakfastScreen() {
 
     const navigation = useNavigation(); // Access navigation
   return (
+
+    
     <View style={styles.container}>
     {/* Header */}
     <View style={styles.header}>
@@ -31,7 +34,10 @@ export default function BreakfastScreen() {
           style={styles.circleImage}
         />
       </View>
-
+{/* Bottom Tab Navigator */}
+<View style={styles.bottomNav}>
+                <BottomTabNavigator />
+            </View>
      
     </View>
   );

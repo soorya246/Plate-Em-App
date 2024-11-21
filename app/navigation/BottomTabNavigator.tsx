@@ -22,14 +22,26 @@ const BottomTabNavigator = () => {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: 'blue',
+        tabBarActiveTintColor: '#7BB86F',
         tabBarInactiveTintColor: 'gray',
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="J2 Menu" component={J2MenuScreen} />
-      <Tab.Screen name="AI Chat" component={AIChatScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Home" component={HomeScreen} 
+      options={{
+        headerShown: false,
+      }}/>
+      <Tab.Screen name="J2 Menu" component={J2MenuScreen} 
+      options={{
+        headerShown: false,
+      }}/>
+      <Tab.Screen name="AI Chat" component={AIChatScreen} 
+      options={{
+        headerShown: false,
+      }}/>
+      <Tab.Screen name="Profile" component={ProfileScreen} 
+      options={{
+        headerShown: false,
+      }}/>
     </Tab.Navigator>
   );
 };

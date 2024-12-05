@@ -1,35 +1,33 @@
 import React from 'react';
-import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function HomeScreen() {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      {/* Header */}
-     { /*<Text style={styles.header}>Home: Choose Your Meal</Text>*/}
-
+    <SafeAreaView style={styles.container}>
       {/* Meal Options */}
       <TouchableOpacity
-      style={styles.mealContainer}
-      onPress={() => navigation.navigate('BreakfastScreen')} // Navigate to BreakfastScreen
-    >
-      <ImageBackground
-        source={require('../assets/images/breakfast.png')} // Replace with the actual image path
-        style={styles.imageBackground}
-        imageStyle={styles.imageBorderRadius}
+        style={styles.mealContainer}
+        onPress={() => navigation.navigate('BreakfastScreen')}
       >
-        <Text style={styles.mealText}>Breakfast</Text>
-      </ImageBackground>
-    </TouchableOpacity>
-
-    <TouchableOpacity
-      style={styles.mealContainer}
-      onPress={() => navigation.navigate('LunchScreen')} // Navigate to BreakfastScreen
-    >
         <ImageBackground
-          source={require('../assets/images/lunch.png')} // Replace with actual image paths
+          source={require('../assets/images/breakfast.png')}
+          style={styles.imageBackground}
+          imageStyle={styles.imageBorderRadius}
+        >
+          <Text style={styles.mealText}>Breakfast</Text>
+        </ImageBackground>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.mealContainer}
+        onPress={() => navigation.navigate('LunchScreen')}
+      >
+        <ImageBackground
+          source={require('../assets/images/lunch.png')}
           style={styles.imageBackground}
           imageStyle={styles.imageBorderRadius}
         >
@@ -38,11 +36,11 @@ export default function HomeScreen() {
       </TouchableOpacity>
 
       <TouchableOpacity
-      style={styles.mealContainer}
-      onPress={() => navigation.navigate('DinnerScreen')} // Navigate to BreakfastScreen
-    >
+        style={styles.mealContainer}
+        onPress={() => navigation.navigate('DinnerScreen')}
+      >
         <ImageBackground
-          source={require('../assets/images/dinner.png')} // Replace with actual image paths
+          source={require('../assets/images/dinner.png')}
           style={styles.imageBackground}
           imageStyle={styles.imageBorderRadius}
         >
@@ -50,7 +48,26 @@ export default function HomeScreen() {
         </ImageBackground>
       </TouchableOpacity>
 
-    </View>
+      {/* Bottom Navigation */}
+      <View style={styles.bottomNav}>
+        <TouchableOpacity style={styles.navButton}>
+          <Ionicons name="home" size={24} color="#F78A1D" />
+          <Text style={styles.navText}>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navButton}>
+          <Ionicons name="menu" size={24} color="#F78A1D" />
+          <Text style={styles.navText}>J2 Menu</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navButton}>
+          <Ionicons name="chatbubble" size={24} color="#F78A1D" />
+          <Text style={styles.navText}>AI Chat</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navButton}>
+          <Ionicons name="person" size={24} color="#F78A1D" />
+          <Text style={styles.navText}>Profile</Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
   );
 }
 
@@ -58,23 +75,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    paddingHorizontal: 20,
-    paddingTop: 40,
-    justifyContent: 'center',
-  },
-  header: {
-    fontSize: 20,
-    color: '#7BB86F',
-    fontWeight: '600',
-    marginBottom: 20,
-    textAlign: 'center',
+    paddingTop: 20, // Space from the top of the screen
+    paddingHorizontal: 16, // Space from the sides of the screen
   },
   mealContainer: {
     height: 170,
-    marginBottom: 30,
+    marginTop: 20, // Space between boxes and top
+    marginHorizontal: 10, // Space from the sides
     borderRadius: 10,
     overflow: 'hidden',
-    backgroundColor: '#F0F9F4', // Light greenish background
+    backgroundColor: '#F0F9F4',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -93,7 +103,7 @@ const styles = StyleSheet.create({
     color: '#7BB86F',
     fontSize: 24,
     fontWeight: '700',
-    backgroundColor: 'rgba(255, 255, 255, 0.8)', // White translucent background
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,
@@ -103,25 +113,19 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     height: 70,
-    backgroundColor: '#F0F9F4', // Light greenish background
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: -2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
+    backgroundColor: '#F0F0F0',
+    borderTopWidth: 1,
+    borderTopColor: '#ccc',
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
   },
-  navItem: {
+  navButton: {
     alignItems: 'center',
-  },
-  navIcon: {
-    fontSize: 24,
-    color: '#7BB86F',
   },
   navText: {
     fontSize: 12,
-    color: '#7BB86F',
+    color: '#F78A1D',
     marginTop: 4,
   },
 });

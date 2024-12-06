@@ -19,11 +19,15 @@ import BreakfastScreen from './BreakfastScreen';
 import LunchScreen from './LunchScreen';
 import DinnerScreen from './DinnerScreen';
 import HomeScreen from './HomeScreen';
+import AIChatBotScreen from './AIChatBotScreen';
+import ProfilePage from './ProfilePage';
+import J2MenuPage from './J2MenuPage';
+
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  
+
   const [currentStep, setCurrentStep] = useState(1);
 
   return (
@@ -67,9 +71,30 @@ export default function App() {
         <Stack.Screen name="DinnerScreen">
           {props => <DinnerScreen {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
         </Stack.Screen>
-        <Stack.Screen name="HomeScreen">
+        <Stack.Screen
+          name="HomeScreen"
+        >
           {props => <HomeScreen {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
         </Stack.Screen>
+
+        <Stack.Screen
+          name="AIChatBotScreen"
+        >
+          {props => <AIChatBotScreen {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
+        </Stack.Screen>
+
+        <Stack.Screen
+          name="ProfilePage"
+        >
+          {props => <ProfilePage {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
+        </Stack.Screen>
+
+        <Stack.Screen
+          name="J2MenuPage"
+        >
+          {props => <J2MenuPage {...props} currentStep={currentStep} setCurrentStep={setCurrentStep} />}
+        </Stack.Screen>
+
       </Stack.Navigator>
     </NavigationContainer>
   );

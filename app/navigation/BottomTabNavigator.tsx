@@ -2,9 +2,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../app/HomeScreen';
-import J2MenuScreen from '../app/J2MenuScreen';
-import AIChatScreen from '../app/AIChatScreen';
-import ProfileScreen from '../app/ProfileScreen';
+import J2MenuPage from '@/app/J2MenuPage';
+import AIChatBotScreen from '@/app/AIChatBotScreen';
+import ProfilePage from '@/app/ProfilePage';
 import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
@@ -30,15 +30,15 @@ const BottomTabNavigator = () => {
       options={{
         headerShown: false,
       }}/>
-      <Tab.Screen name="J2 Menu" component={J2MenuScreen} 
+      <Tab.Screen name="J2 Menu" component={J2MenuPage} 
       options={{
         headerShown: false,
       }}/>
-      <Tab.Screen name="AI Chat" component={AIChatScreen} 
+      <Tab.Screen name="AI Chat" component={AIChatBotScreen} 
       options={{
         headerShown: false,
       }}/>
-      <Tab.Screen name="Profile" component={ProfileScreen} 
+      <Tab.Screen name="Profile" component={ProfilePage} 
       options={{
         headerShown: false,
       }}/>

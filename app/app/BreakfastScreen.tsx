@@ -9,9 +9,9 @@ export default function BreakfastScreen() {
     const [totalCalories, setTotalCalories] = useState(0);
 
     const foodData = [
-        { id: '1', name: 'Blueberry Coffee Cake', calories: 250, protein: 5, icon: 'fast-food' },
+        { id: '1', name: 'Gala Apple', calories: 80, protein: 0.4, icon: 'logo-apple' },
         { id: '2', name: 'Eggs', calories: 70, protein: 6, icon: 'egg' },
-        { id: '3', name: 'Toast', calories: 80, protein: 3, icon: 'pizza' },
+        { id: '3', name: 'Vanilla Yogurt', calories: 100, protein: 3.3, icon: 'water' },
     ];
 
     const addFoodToPlate = (food) => {
@@ -29,6 +29,11 @@ export default function BreakfastScreen() {
 
     const saveCalories = () => {
         alert(`Total Calories Saved: ${totalCalories}`);
+    };
+
+    const clearPlate = () => {
+        setSelectedIcons([]);
+        setTotalCalories(0);
     };
 
     return (
@@ -81,30 +86,35 @@ export default function BreakfastScreen() {
                 </View>
             </View>
 
-            {/* Save Button */}
+            {/* Save and Clear Buttons */}
             <TouchableOpacity style={styles.saveButton} onPress={saveCalories}>
                 <Text style={styles.saveButtonText}>Save Calories</Text>
             </TouchableOpacity>
 
-            {/* Bottom Navigation */}
-            <View style={styles.bottomNav}>
-                <TouchableOpacity style={styles.navButton}>
-                    <Ionicons name="home" size={24} color="#F78A1D" />
-                    <Text style={styles.navText}>Home</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.navButton}>
-                    <Ionicons name="menu" size={24} color="#F78A1D" />
-                    <Text style={styles.navText}>J2 Menu</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.navButton}>
-                    <Ionicons name="chatbubble" size={24} color="#F78A1D" />
-                    <Text style={styles.navText}>AI Chat</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.navButton}>
-                    <Ionicons name="person" size={24} color="#F78A1D" />
-                    <Text style={styles.navText}>Profile</Text>
-                </TouchableOpacity>
-            </View>
+            {/* Clear Button */}
+            <TouchableOpacity style={styles.clearButton} onPress={clearPlate}>
+                <Text style={styles.clearButtonText}>Clear Plate</Text>
+            </TouchableOpacity>
+
+        {/* Bottom Navigation */}
+      <View style={styles.bottomNav}>
+        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('HomeScreen')}>
+          <Ionicons name="home" size={24} color="#F78A1D" />
+          <Text style={styles.navText}>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('J2MenuPage')}>
+          <Ionicons name="menu" size={24} color="#F78A1D" />
+          <Text style={styles.navText}>J2 Menu</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('AIChatBotScreen')}>
+          <Ionicons name="chatbubble" size={24} color="#F78A1D" />
+          <Text style={styles.navText}>AI Chat</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('ProfilePage')}>
+          <Ionicons name="person" size={24} color="#F78A1D" />
+          <Text style={styles.navText}>Profile</Text>
+        </TouchableOpacity>
+      </View>
         </View>
     );
 }
@@ -191,6 +201,21 @@ const styles = StyleSheet.create({
         width: '70%',
     },
     saveButtonText: {
+        color: '#FFFFFF',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    clearButton: {
+        backgroundColor: '#FF4D4D',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8,
+        alignItems: 'center',
+        alignSelf: 'center',
+        marginVertical: 10,
+        width: '70%',
+    },
+    clearButtonText: {
         color: '#FFFFFF',
         fontSize: 16,
         fontWeight: 'bold',

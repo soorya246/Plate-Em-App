@@ -64,9 +64,9 @@ const GetWorkoutFrequency = ({ currentStep, setCurrentStep }) => {
 
       <View style={styles.footer}>
         <TouchableOpacity
-          style={[styles.nextButton, !selectedFrequency && styles.nextButtonDisabled]}
+          style={[styles.nextButton]}
           onPress={handleNext}
-          disabled={!selectedFrequency}
+          
         >
           <Text style={styles.buttonText}>Next</Text>
         </TouchableOpacity>
@@ -122,11 +122,11 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     marginVertical: 10,
-    backgroundColor: '#A3C48E',
+    backgroundColor: '#D3D3D3',
     alignItems: 'center',
   },
   optionButtonSelected: {
-    backgroundColor: '#83C61A',
+    backgroundColor: '#A3C48E',
   },
   optionButtonText: {
     color: '#000000',

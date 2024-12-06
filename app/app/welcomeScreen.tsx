@@ -7,7 +7,7 @@ export default function WelcomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>kcal</Text>
+      <Text style={styles.title}>Plate 'Em</Text>
       <Text style={styles.heading}>Eat Healthy</Text>
       <Text style={styles.subtitle}>
         Maintaining good health should be the primary focus of everyone.
@@ -16,7 +16,7 @@ export default function WelcomeScreen() {
         <View style={[styles.indicator, styles.activeIndicator]} />
         <View style={styles.indicator} />
       </View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
         <Text style={styles.buttonText}>Get Started</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>

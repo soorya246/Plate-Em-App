@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const ConfirmationPage = () => {
@@ -17,7 +17,10 @@ const ConfirmationPage = () => {
       </Text>
 
       <View style={styles.imagePlaceholder}>
-        {/* Add an image component here if needed */}
+      <Image
+          source={require('../../assets/images/FoodPlate.png')} // Correct relative path
+          style={styles.image}
+        /> 
       </View>
 
       <TouchableOpacity style={styles.doneButton} onPress={handleDone}>
@@ -56,6 +59,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 40,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 100,
   },
   doneButton: {
     backgroundColor: '#83C61A',

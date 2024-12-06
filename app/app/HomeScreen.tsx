@@ -50,19 +50,19 @@ export default function HomeScreen() {
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.navButton}>
+        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('HomeScreen')}>
           <Ionicons name="home" size={24} color="#F78A1D" />
           <Text style={styles.navText}>Home</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navButton}>
+        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('J2MenuPage')}>
           <Ionicons name="menu" size={24} color="#F78A1D" />
           <Text style={styles.navText}>J2 Menu</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navButton}>
+        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('AIChatBotScreen')}>
           <Ionicons name="chatbubble" size={24} color="#F78A1D" />
           <Text style={styles.navText}>AI Chat</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navButton}>
+        <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('ProfilePage')}>
           <Ionicons name="person" size={24} color="#F78A1D" />
           <Text style={styles.navText}>Profile</Text>
         </TouchableOpacity>
@@ -75,13 +75,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    paddingTop: 20, // Space from the top of the screen
-    paddingHorizontal: 16, // Space from the sides of the screen
+    
   },
   mealContainer: {
     height: 170,
-    marginTop: 20, // Space between boxes and top
-    marginHorizontal: 10, // Space from the sides
+    marginTop: 45, // Space between boxes and top
+    marginHorizontal: 20, // Space from the sides
     borderRadius: 10,
     overflow: 'hidden',
     backgroundColor: '#F0F9F4',
@@ -116,10 +115,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0F0F0',
     borderTopWidth: 1,
     borderTopColor: '#ccc',
-    width: '100%',
     position: 'absolute',
     bottom: 0,
-  },
+    width: '100%',
+},
   navButton: {
     alignItems: 'center',
   },

@@ -59,7 +59,7 @@ const GetHeight = ({ currentStep, setCurrentStep }) => {
 
       <Slider
         style={styles.slider}
-        minimumValue={50}
+        minimumValue={0}
         maximumValue={250}
         step={1}
         value={height}

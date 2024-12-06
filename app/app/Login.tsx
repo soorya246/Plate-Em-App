@@ -87,17 +87,12 @@ export default function Login() {
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableOpacity>
 
-      {/* Developer-only Bypass Button */}
-      {__DEV__ && (
-        <TouchableOpacity style={styles.bypassButton} onPress={handleBypassLogin}>
-          <Text style={styles.bypassButtonText}>Skip Login (Dev Only)</Text>
-        </TouchableOpacity>
-      )}
+     
 
       {/* Sign Up Link */}
       <View style={styles.signupContainer}>
         <Text style={styles.signupText}>Don't Have An Account?</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleBypassLogin}>
           <Text style={styles.signupLink}>Sign Up</Text>
         </TouchableOpacity>
       </View>

@@ -115,11 +115,11 @@ const styles = StyleSheet.create({
       padding: 15,
       borderRadius: 10,
       marginVertical: 10,
-      backgroundColor: '#A3C48E',
+      backgroundColor: '#D3D3D3',
       alignItems: 'center',
     },
     optionButtonSelected: {
-      backgroundColor: '#83C61A',
+      backgroundColor: '#A3C48E',
     },
     optionButtonText: {
       color: '#000000',

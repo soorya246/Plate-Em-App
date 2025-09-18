@@ -12,3 +12,5 @@ The app has the following:
 Frontend: React Native (Expo), TypeScript
 Backend: Python, Supabase (auth + database)
 AI: OpenAI API (chatbot + recommendation system)
+
+Link to Presentation: https://docs.google.com/presentation/d/1OtmmfvPT5oUMuVsR3conBg7aOOsox5st_ZfscbR_yTg/edit?usp=sharing
